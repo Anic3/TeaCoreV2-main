@@ -1,0 +1,11 @@
+title: "Gửi tin nhắn vào máy chủ"
+
+inputs:
+  chat:
+    id: "chat_message"
+    label: "Nội dung chat"
+    placeholder: "Nhập nội dung bạn muốn gửi vào máy chủ"
+    style: "PARAGRAPH"   # SHORT | PARAGRAPH
+    min-length: 1
+    max-length: 32
+    required: true

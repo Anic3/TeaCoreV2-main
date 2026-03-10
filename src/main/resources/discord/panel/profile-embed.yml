@@ -1,0 +1,35 @@
+title: "📊 Profile %player_name%"
+color: "#27F531"
+
+description: |
+  👤 **Thông tin tài khoản của %player_name%**
+
+  **Minecraft**
+  • Tên: `%player_name%`
+  • UUID: `%player_uuid%`
+  • Trạng thái: `%player_online%`
+  • Số tiền: `%player_money%`
+  • Số shard: `%player_shard%`
+  • Rank: `%player_rank%`
+
+  **Discord**
+  • User: `%discord_tag%`
+  • ID: `%discord_id%`
+
+  **Liên kết**
+  • Đã liên kết: `%linked%`
+  • Trạng thái khóa: `%locked%`
+
+thumbnail: "https://minotar.net/helm/%player_uuid%/128"
+footer:
+  text: "Viesteal.xyz"
+  icon_url: "https://cdn.discordapp.com/icons/1302559107533897749/b22959f919998ac44f7295d5b099ec02.webp?size=2048"
+
+placeholders:
+  player_online: "🟢 Online"
+  player_offline: "🔴 Offline"
+  linked_yes: "Yes"
+  linked_no: "No"
+  account_locked: "Yes"
+  account_unlocked: "No"
+  default_rank: "N/A"

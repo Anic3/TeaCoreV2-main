@@ -1,0 +1,113 @@
+title: "🎮 Game Panel - 1.0"
+color: "#ffdd36"
+
+description: |
+  🎮 **Bảng điều khiển tài khoản Minecraft**
+
+  Chọn chức năng bên dưới để quản lý tài khoản của bạn:
+
+  🔗 Liên kết Discord với Minecraft  
+  ❌ Hủy liên kết tài khoản Discord  
+  🔒 Khóa tài khoản đã liên kết  
+  🔓 Mở khóa tài khoản đã liên kết  
+  📊 Kiểm tra trạng thái tài khoản  
+
+  🥾 Kick người chơi (khi online)  
+  ☠️ Kill người chơi (khi online)  
+
+  💬 Gửi chat hoặc lệnh vào server  
+  👥 Xem danh sách người chơi online  
+
+  💰 Xem số dư tiền  
+  💎 Xem số shard hiện tại  
+  💸 Chuyển tiền cho người chơi khác
+
+  ⬇️ Sử dụng **dropdown** hoặc **button** phía dưới để thao tác.
+
+thumbnail: ""
+footer:
+  text: "Viesteal.xyz"
+  icon_url: "https://cdn.discordapp.com/icons/1302559107533897749/b22959f919998ac44f7295d5b099ec02.webp?size=2048"
+
+# ======================
+# QUICK ACTION BUTTONS
+# ======================
+buttons:
+  row-1:
+    - id: "panel:link"
+      text: "🔗 Link"
+      style: "SUCCESS"
+
+    - id: "panel:unlink"
+      text: "❌ Un-Link"
+      style: "DANGER"
+
+    - id: "panel:status"
+      text: "📊 Status"
+      style: "SECONDARY"
+
+    - id: "panel:lock"
+      text: "🔒 Lock"
+      style: "SECONDARY"
+
+    - id: "panel:unlock"
+      text: "🔓 Un-Lock"
+      style: "PRIMARY"
+
+# ======================
+# DROPDOWN MENU
+# ======================
+dropdown:
+  id: "panel:actions"
+  placeholder: "⬇️ Hãy chọn mục cần sử dụng"
+  min-select: 1
+  max-select: 1
+
+  options:
+    - label: "🔗 Link Account"
+      value: "link"
+      description: "Liên kết tài khoản Discord của bạn với tài khoản Minecraft"
+
+    - label: "❌ Unlink Account"
+      value: "unlink"
+      description: "Gỡ liên kết giữa tài khoản Discord và Minecraft"
+
+    - label: "🔒 Lock Account"
+      value: "lock"
+      description: "Khóa tài khoản đã liên kết để ngăn thay đổi trái phép"
+
+    - label: "🔓 Unlock Account"
+      value: "unlock"
+      description: "Mở khóa tài khoản để cho phép thay đổi hoặc hủy liên kết"
+
+    - label: "📊 Account Status"
+      value: "status"
+      description: "Xem trạng thái liên kết tài khoản và tình trạng online"
+
+    - label: "🥾 Kick Player"
+      value: "kick"
+      description: "Kick người chơi ra khỏi máy chủ"
+
+    - label: "☠️ Kill Player"
+      value: "kill"
+      description: "Giết người chơi của bạn trong game"
+
+    - label: "💬 Send Chat / Command"
+      value: "chat"
+      description: "Gửi tin nhắn hoặc lệnh vào máy chủ"
+
+    - label: "👥 Player List"
+      value: "playerlist"
+      description: "Xem danh sách người chơi đang online"
+
+    - label: "💰 Money Balance"
+      value: "balance_money"
+      description: "Kiểm tra số tiền hiện tại của bạn"
+
+    - label: "💎 Shard Balance"
+      value: "balance_shard"
+      description: "Kiểm tra số shard hiện tại của bạn"
+
+    - label: "💸 Pay Money"
+      value: "pay"
+      description: "Chuyển tiền cho người chơi khác"

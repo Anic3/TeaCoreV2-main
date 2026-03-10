@@ -1,0 +1,11 @@
+# Percentage rate for gaining shards while AFK
+# 1.0 = default (100%)
+# 1.5 = +50% bonus (150%)
+# 2.0 = double rewards (200%)
+afk-shard-percent: 1.0
+
+# Percentage rate for gaining shards when killing players/mobs
+# 1.0 = default (100%)
+# 1.5 = +50% bonus (150%)
+# 2.0 = double rewards (200%)
+kill-shard-percent: 1.0

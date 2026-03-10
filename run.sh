@@ -1,0 +1,1 @@
+mvn clean install && java -jar skidfuscator.jar obfuscate target/TeaCoreV2-1.0.jar -li=target/libs --notrack --config=config.hocon

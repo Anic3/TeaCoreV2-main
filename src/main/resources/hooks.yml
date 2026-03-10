@@ -1,0 +1,2 @@
+# Hook into CoinsEngine with shard
+coinsengine: "shard"

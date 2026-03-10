@@ -1,0 +1,16 @@
+# Power/strength of the double jump
+jump-power: 1.5
+# Vertical Y boost when jumping
+jump-y: 0.3
+# Cooldown time in miliseconds
+cooldown: 0
+# Ground depth check
+ground-check-depth: 3
+
+# Worlds allowed for double jump
+allowed-worlds:
+  - afk
+# Regions allowed for double jump
+allowed-regions:
+  - safezone
+  - afkzone

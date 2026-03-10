@@ -1,0 +1,7 @@
+# Worlds allowed for fly
+allowed-worlds:
+  - afk
+# Regions allowed for fly
+allowed-regions:
+  - safezone
+  - afkzone

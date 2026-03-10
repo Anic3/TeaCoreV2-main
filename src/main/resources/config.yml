@@ -1,0 +1,64 @@
+# License key for the plugin
+license-key: "null"
+
+# Enable or disable plugin features
+features:
+  # Night vision feature
+  nightvision: true
+  # Spawn feature
+  spawn: true
+  # AFK feature
+  afk: true
+  # Discord integration
+  discord: false
+  # Store system
+  store: false
+  # Chat system
+  chat: true
+  # Economy system
+  economy: true
+  # Phantom checks
+  phantom: true
+  # Mobspawn checks
+  mobspawn: true
+  # Warp system
+  warp: true
+  # Hide/vanish feature
+  hide: true
+  # Double jump and fly feature
+  jumpandfly: true
+  # Shard system
+  shard: true
+  # Enderchest feature
+  enderchest: true
+
+# Database settings
+database:
+  # mysql | sqlite
+  type: "sqlite"
+
+  # Number of async threads for database operations
+  async-threads: 2
+
+  # MySQL settings
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "mydb"
+    username: "root"
+    password: "password123"
+
+    # HikariCP settings
+    pool-size: 10
+    minimum-idle: 2
+    maximum-lifetime: 1800000       # 30 minutes
+    connection-timeout: 30000       # 30 seconds
+    idle-timeout: 600000            # 10 minutes
+
+    # JDBC properties
+    properties:
+      useSSL: false
+      autoReconnect: true
+      characterEncoding: "UTF-8"
+      useUnicode: true
+      allowPublicKeyRetrieval: true

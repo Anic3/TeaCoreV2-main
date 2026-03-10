@@ -1,0 +1,76 @@
+# ======================================================
+#                    DISCORD PANEL
+#                   MESSAGE CONFIG
+# ======================================================
+# This file contains all messages used by the Discord
+# panel interactions (buttons, dropdowns, modals)
+# ======================================================
+
+
+# ======================================================
+# LINK SYSTEM MESSAGES
+# ======================================================
+
+already_linked: 'Tài khoản của bạn đã được liên kết rồi!'
+not_linked: 'Tài khoản của bạn chưa được liên kết.'
+link_generated: 'Mã liên kết đã được tạo. Vui lòng nhập lệnh /link %code% trong game.'
+
+
+# ======================================================
+# UNLINK SYSTEM MESSAGES
+# ======================================================
+
+unlink_success: 'Hủy liên kết tài khoản thành công.'
+unlink_cooldown: 'Bạn phải chờ %time% sau đó mới có thể hủy liên kết.'
+
+
+# ======================================================
+# PLAYER / TARGET VALIDATION
+# ======================================================
+
+player_not_online: 'Người chơi hiện không online.'
+player_not_found: 'Không tìm thấy người chơi.'
+target_not_found: 'Không tìm thấy người chơi đó.'
+
+
+# ======================================================
+# PLAYER ACTION FEEDBACK
+# ======================================================
+
+kill_success: 'Người chơi đã bị giết.'
+
+kick_message: 'You got kicked from the server!'
+kick_success: 'Người chơi đã bị kick khỏi server.'
+
+chat_success: 'Tin nhắn đã được gửi vào máy chủ.'
+
+
+# ======================================================
+# PLAYER LIST DISPLAY
+# ======================================================
+
+playerlist: '``%playerlist%`` và %count% người chơi khác...'
+no_players_online: 'Không có người chơi nào online.'
+
+
+# ======================================================
+# ECONOMY / PAY SYSTEM
+# ======================================================
+
+pay_success: 'Chuyển tiền thành công đến %target% với số tiền %amount%'
+pay_invalid_amount: 'Số tiền không hợp lệ.'
+pay_self: 'Bạn không thể chuyển tiền cho bản thân.'
+pay_not_enough_money: 'Bạn không đủ tiền.'
+pay_disabled_by_target: 'Người chơi đó đang tắt chuyển tiền.'
+pay_error: 'Lỗi xảy ra ngoài ý muốn, vui lòng báo lỗi với Tuanvo0022!'
+
+balance_money: 'Bạn đang có %amount% tiền.'
+balance_shard: 'Bạn đang có %amount% shard.'
+
+
+# ======================================================
+# LOCK / UNLOCK SYSTEM
+# ======================================================
+
+lock_success: 'Khóa tài khoản thanh công.'
+unlock_success: 'Mô khóa tài khoản thanh công.'

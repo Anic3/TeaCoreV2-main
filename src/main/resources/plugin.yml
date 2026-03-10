@@ -1,0 +1,151 @@
+name: TeaCoreV2
+version: '1.0'
+main: me.tuanvo0022.Main
+api-version: 1.21
+folia-supported: true
+
+authors:
+  - Tuanvo0022
+
+depend:
+  - PlaceholderAPI
+  - Vault
+  - TAB
+  - LuckPerms
+
+softdepend:
+  - WorldGuard
+  - CoinsEngine
+  - PlayerPoints
+
+libraries:
+  - com.zaxxer:HikariCP:7.0.2
+  - net.dv8tion:JDA:6.2.0
+
+commands:
+  teacore:
+    description: Main command for teacore (e.g. /teacore reload)
+    usage: /teacore reload
+    permission: teacore.admin
+    aliases: [teacorev2]
+  msg:
+    description: Send a message to a player.
+    usage: /<command> <player> <message>
+    permission: teacore.msg
+    aliases: [message]
+  reply:
+    description: Reply a message to a player.
+    usage: /<command> <player> <message>
+    permission: teacore.reply
+    aliases: [r]
+  ping:
+    description: Show the player ping in ms.
+    usage: /<command> <player>
+    permission: teacore.ping
+  restart:
+    description: Restart server command.
+    usage: /<command>
+    permission: teacore.admin
+  enderchest:
+    description: Open your enderchest.
+    usage: /<command>
+    permission: teacore.enderchest
+    aliases: [ec]
+permissions:
+  # -----------------------------
+  # PERMISSIONS DEFAULT TRUE
+  # -----------------------------
+  teacore.afk:
+    description: "Allows using the AFK command"
+    default: true
+  teacore.afkshard:
+    description: "Allows claiming AFK shards"
+    default: true
+  teacore.balance:
+    description: "Allows checking your or others' balance"
+    default: true
+  teacore.delafk:
+    description: "Allows deleting AFK points or status"
+    default: true
+  teacore.delspawn:
+    description: "Allows deleting a spawn point"
+    default: true
+  teacore.delwarp:
+    description: "Allows deleting a warp point"
+    default: true
+  teacore.discord:
+    description: "Allows sending or accessing the Discord link"
+    default: true
+  teacore.killshard:
+    description: "Allows claiming kill shards"
+    default: true
+  teacore.msg:
+    description: "Allows sending private messages"
+    default: true
+  teacore.msgtoggle:
+    description: "Allows toggling private message reception"
+    default: true
+  teacore.nightvision:
+    description: "Allows using the night vision command"
+    default: true
+  teacore.pay:
+    description: "Allows sending money to other players"
+    default: true
+  teacore.paytoggle:
+    description: "Allows toggling payment reception"
+    default: true
+  teacore.ping:
+    description: "Allows checking your or others' ping"
+    default: true
+  teacore.reply:
+    description: "Allows replying to private messages"
+    default: true
+  teacore.shard:
+    description: "Allows checking your or others' shards"
+    default: true
+  teacore.spawn:
+    description: "Allows teleporting to spawn points"
+    default: true
+  teacore.store:
+    description: "Allows accessing the server store link"
+    default: true
+  teacore.togglechat:
+    description: "Allows toggling chat visibility"
+    default: true
+  teacore.warp:
+    description: "Allows teleporting to warp points"
+    default: true
+  teadoublejump.use:
+    description: "Allows use double jump"
+    default: true
+  teacore.link:
+    description: "Allows using the link command"
+    default: true
+
+  # -----------------------------
+  # PERMISSIONS DEFAULT OP
+  # -----------------------------
+  teacore.admin:
+    description: "Grants full administrative access to the plugin"
+    default: op
+  teacore.hide:
+    description: "Allows using the hide command"
+    default: op
+  teacore.mobspawn:
+    description: "Allows toggling mob spawn around the player"
+    default: op
+  teacore.phantom:
+    description: "Allows toggling phantom mob visibility"
+    default: op
+  teacore.setafk:
+    description: "Allows setting AFK points or status"
+    default: op
+  teacore.setspawn:
+    description: "Allows setting a spawn point"
+    default: op
+  teacore.setwarp:
+    description: "Allows setting a warp point"
+    default: op
+  teafly.use:
+    description: "Allows use fly in region"
+    default: op

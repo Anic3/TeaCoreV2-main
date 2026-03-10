@@ -1,0 +1,3 @@
+# Lightning effect on player death
+lightning-on-death:
+  enabled: true

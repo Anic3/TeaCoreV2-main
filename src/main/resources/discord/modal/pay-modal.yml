@@ -1,0 +1,19 @@
+title: "Chuyển tiền cho người chơi khác"
+
+inputs:
+  target:
+    id: "pay_target"
+    label: "Tên người nhận"
+    placeholder: "Nhập tên người chơi bạn muốn chuyển tiền"
+    style: "PARAGRAPH"   # SHORT | PARAGRAPH
+    min-length: 1
+    max-length: 16
+    required: true
+  amount:
+    id: "pay_amount"
+    label: "Số tiền cần chuyển"
+    placeholder: "Nhập số tiền bạn muốn chuyển theo định dạng như 10000 hoặc 10k"
+    style: "PARAGRAPH"   # SHORT | PARAGRAPH
+    min-length: 1
+    max-length: 64
+    required: true    

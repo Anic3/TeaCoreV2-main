@@ -1,0 +1,5 @@
+# Max players in each afk area
+max-players: 120
+# When enabled, players who join the server while already being in an AFK zone
+# will be teleported to an available AFK area/slot
+teleport-to-join: false

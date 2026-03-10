@@ -1,0 +1,561 @@
+# ======================================================
+#                    MESSAGE STRUCTURE
+# ======================================================
+#   message_name:                  # Unique identifier for the message
+#     enabled: true/false          # Enable or disable the entire message (default: true)
+#     message: "Text content"      # Main chat message (optional)
+#     title: "Title text"          # Title display (optional)
+#     subtitle: "Subtitle text"    # Subtitle display (optional)
+#     action_bar: "Text"           # Action bar text (optional)
+#     sound: sound.effect          # Sound to play (optional)
+#     fade_in: 10                  # Title fade-in time (ticks)
+#     stay: 40                     # Title stay time (ticks)
+#     fade_out: 10                 # Title fade-out time (ticks)
+#
+# All messages use MiniMessage format:
+#   https://docs.advntr.dev/minimessage/format.html
+#
+# PlaceholderAPI placeholders are supported (e.g., %player%, %target%)
+# ======================================================
+error_player_only:  
+  enabled: true  
+  message: '<#ff0000>Lệnh này chỉ có người chơi mới có thể sử dụng.'
+
+error_permission:  
+  enabled: true  
+  message: '<#ff0000>Bạn không có quyền để sử dụng lệnh này.'  
+  action_bar: '<#ff0000>Bạn không có quyền để sử dụng lệnh này.'
+  sound: entity.villager.no  
+
+error_player_not_found:  
+  enabled: true  
+  message: '<#ff0000>Không tìm thấy người chơi này.'  
+  action_bar: '<#ff0000>Không tìm thấy người chơi này.'  
+  sound: entity.villager.no  
+
+error_not_enough_money:  
+  enabled: true  
+  message: '<#ff0000>Bạn không đủ tiền.'  
+  action_bar: '<#ff0000>Bạn không đủ tiền.'  
+  sound: entity.villager.no  
+
+reload_complete:  
+  enabled: true  
+  message: '<green>Reload successful!'
+
+# ------------------------------------------------------
+#                TELEPORT FEATURE
+# ------------------------------------------------------
+teleport_cancel:  
+  enabled: true  
+  message: "<#ff0000>Dịch chuyển đã bị huỷ vì bạn di chuyển."  
+  action_bar: "<#ff0000>Dịch chuyển đã bị huỷ vì bạn di chuyển."  
+  sound: entity.villager.no  
+
+teleport_countdown:  
+  enabled: true  
+  message: "<gray>Dịch chuyển sau <#ffdd36>%time%s"  
+  action_bar: "<gray>Dịch chuyển sau <#ffdd36>%time%s"  
+  sound: entity_enderman_teleport  
+
+teleport_complete_spawn:  
+  enabled: true  
+  message: "<gray>Dịch chuyển thành công tới Spawn."  
+  action_bar: "<gray>Dịch chuyển thành công tới Spawn."  
+  sound: entity_enderman_teleport  
+  
+teleport_complete_afk:  
+  enabled: true  
+  message: "<gray>Dịch chuyển thành công tới Afk."  
+  action_bar: "<gray>Dịch chuyển thành công tới Afk."  
+  sound: entity_enderman_teleport  
+
+teleport_complete_warp:  
+  enabled: true  
+  message: "<gray>Dịch chuyển thành công tới warp %name%"  
+  action_bar: "<gray>Dịch chuyển thành công tới warp %name%"  
+  sound: entity_enderman_teleport
+
+# ------------------------------------------------------
+#                STORE FEATURE
+# ------------------------------------------------------
+store:  
+  enabled: true  
+  message: |-
+    <white>
+    <#00c1fe>ᴠɪsɪᴛ ᴛʜᴇ ᴅᴏɴᴜᴛsᴍᴘ sᴛᴏʀᴇ
+    <#00c1fe>● <white><underlined>https://store.donutsmp.net
+    <white>
+  action_bar: '<gray>Link has been sent to chat!'  
+
+# ------------------------------------------------------
+#                DISCORD FEATURE
+# ------------------------------------------------------
+discord:
+  enabled: true
+  message: |-
+    <white>
+    <#2f9bde>➤ ᴊᴏɪɴ ᴛʜᴇ ᴠɪᴇꜱᴛᴇᴀʟ ᴅɪꜱᴄᴏʀᴅ ᴄᴏᴍᴍᴜɴɪᴛʏ!
+    <#2f9bde>● <click:open_url:https://discord.gg/viesteal><color:#2f9bde>● <white>discord.gg/viesteal</click>
+    <white>
+  action_bar: '<gray>Link has been sent to chat!' 
+ 
+
+# ------------------------------------------------------
+#                PING FEATURE
+# ------------------------------------------------------
+ping_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /ping <player>"  
+  sound: entity.villager.no  
+  
+ping_self:   
+  enabled: true  
+  message: "<gray>Ping của bạn là <#ffdd36>%ping%ms"  
+  action_bar: "<gray>Ping của bạn là <#ffdd36>%ping%ms"  
+ping_other:  
+  enabled: true  
+  message: "<gray>Ping của %target% là <#ffdd36>%ping%ms"  
+  action_bar: "<gray>Ping của %target% là <#ffdd36>%ping%ms"  
+
+# ------------------------------------------------------
+#                HIDE FEATURE
+# ------------------------------------------------------
+hide_enabled:   
+  enabled: true  
+  message: "<gray>Bạn đã ẩn danh."
+  action_bar: "<gray>Bạn đã ẩn danh."
+
+hide_disabled:   
+  enabled: true  
+  message: "<gray>Bạn đã hiện hình."
+  action_bar: "<gray>Bạn đã hiện hình."
+
+# ------------------------------------------------------
+#                NIGHTVISION FEATURE
+# ------------------------------------------------------
+nightvision_enabled:   
+  enabled: true  
+  message: "<gray>Night vision đã bật."  
+  action_bar: "<gray>Night vision đã bật."  
+
+nightvision_disabled:   
+  enabled: true  
+  message: "<gray>Night vision đã tắt."  
+  action_bar: "<gray>Night vision đã tắt."
+
+# ------------------------------------------------------
+#                BALANCE FEATURE
+# ------------------------------------------------------
+balance_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /balance <player>"  
+  sound: entity.villager.no  
+  
+balance_self:   
+  enabled: true  
+  message: "<gray>Bạn có <#00FC00>$%amount%"  
+  action_bar: "<gray>Bạn có <#00FC00>$%amount%"  
+
+balance_other:  
+  enabled: true  
+  message: "<gray>%target% đang có <#00FC00>$%amount%"  
+  action_bar: "<gray>%target% đang có <#00FC00>$%amount%"
+
+# ------------------------------------------------------
+#                PHANTOM FEATURE
+# ------------------------------------------------------
+phantom_enabled:   
+  enabled: true  
+  message: "<gray>Phantom đã được tắt, chúng sẽ không spawn nữa."  
+  action_bar: "<gray>Phantom đã được tắt, chúng sẽ không spawn nữa."  
+
+phantom_disabled:  
+  enabled: true  
+  message: "<gray>Phantom đã được bật, chúng sẽ spawn trở lại."  
+  action_bar: "<gray>Phantom đã được bật, chúng sẽ spawn trở lại."  
+  
+# ------------------------------------------------------
+#                MOBSPAWN FEATURE
+# ------------------------------------------------------
+mobspawn_enabled:   
+  enabled: true  
+  message: "<gray>Quái xung quanh bạn đã được tắt, chúng sẽ không spawn nữa."
+  action_bar: "<gray>Quái xung quanh bạn đã được tắt, chúng sẽ không spawn nữa."
+
+mobspawn_disabled:  
+  enabled: true  
+  message: "<gray>Quái xung quanh bạn đã được bật, chúng sẽ spawn trở lại."
+  action_bar: "<gray>Quái xung quanh bạn đã được bật, chúng sẽ spawn trở lại."
+  
+# ------------------------------------------------------
+#                CHAT FEATURE
+# ------------------------------------------------------
+chattoggle_enabled:   
+  enabled: true  
+  message: "<gray>Chat đã bật."
+  action_bar: "<gray>Chat đã bật."
+
+chattoggle_disabled:  
+  enabled: true  
+  message: "<gray>Chat đã tắt."
+  action_bar: "<gray>Chat đã tắt."
+
+# ------------------------------------------------------
+#                PAY FEATURE
+# ------------------------------------------------------
+pay_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /pay <player> <amount>"  
+  sound: entity.villager.no  
+  
+paytoggle_enabled:   
+  enabled: true  
+  message: "<gray>Bạn đã bật chuyển tiền."  
+  action_bar: "<gray>Bạn đã bật chuyển tiền."
+
+paytoggle_disabled:   
+  enabled: true  
+  message: "<gray>Bạn đã tắt chuyển tiền."
+  action_bar: "<gray>Bạn đã tắt chuyển tiền."
+
+pay_self:   
+  enabled: true  
+  message: "<#ff0000>Bạn không thể chuyển tiền cho chính mình."  
+  action_bar: "<#ff0000>Bạn không thể chuyển tiền cho chính mình."
+  sound: entity.villager.no  
+
+pay_success:   
+  enabled: true  
+  message: "<gray>Bạn đã chuyển tiền cho <#ffdd36>%receiver% <#00FC00>$%amount%"  
+  action_bar: "<gray>Bạn đã chuyển tiền cho <#ffdd36>%receiver% <#00FC00>$%amount%"  
+
+pay_received:   
+  enabled: true  
+  message: "<#ffdd36>%sender% <gray>đã chuyển cho bạn <#00FC00>$%amount%"  
+  action_bar: "<#ffdd36>%sender% <gray>đã chuyển cho bạn <#00FC00>$%amount%"  
+
+pay_received_offline:   
+  enabled: true  
+  message: "<#ffdd36>%sender% <gray>đã chuyển cho bạn <#00FC00>$%amount%"  
+  action_bar: "<#ffdd36>%sender% <gray>đã chuyển cho bạn <#00FC00>$%amount%"  
+
+pay_invalid_amount:   
+  enabled: true  
+  message: "<#ff0000>Số tiền không hợp lệ."  
+  action_bar: "<#ff0000>Số tiền không hợp lệ."  
+  sound: entity.villager.no  
+
+pay_disabled_other:   
+  enabled: true  
+  message: "<#ff0000>Người chơi đó đã tắt chuyển tiền."  
+  action_bar: "<#ff0000>Người chơi đó đã tắt chuyển tiền."  
+  sound: entity.villager.no
+
+# ------------------------------------------------------
+#                MSG FEATURE
+# ------------------------------------------------------
+msg_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /msg <player> <message>"  
+  sound: entity.villager.no  
+
+reply_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /reply <player> <message>"  
+  sound: entity.villager.no  
+
+msg_yourself:   
+  enabled: true  
+  message: "<#ff0000>Bạn không thể nhắn riêng cho chính mình."  
+  action_bar: "<#ff0000>Bạn không thể nhắn riêng cho chính mình."  
+  sound: entity.villager.no  
+
+msg_enabled:   
+  enabled: true  
+  message: "<gray>Bạn đã bật nhắn riêng."
+  action_bar: "<gray>Bạn đã bật nhắn riêng."
+
+msg_disabled:   
+  enabled: true  
+  message: "<gray>Bạn đã tắt nhắn riêng."
+  action_bar: "<gray>Bạn đã tắt nhắn riêng."
+
+msg_disabled_other:   
+  enabled: true  
+  message: "<#ff0000>Người chơi đó đã tắt nhắn riêng."
+  action_bar: "<#ff0000>Người chơi đó đã tắt nhắn riêng."  
+  sound: entity.villager.no  
+
+msg_no_received:   
+  enabled: true  
+  message: "<#ff0000>Bạn không có ai để nói chuyện."  
+  action_bar: "<#ff0000>Bạn không có ai để nói chuyện."  
+  sound: entity.villager.no  
+
+msg_send:  
+  enabled: true  
+  message: "<#ffdd36>YOU <gray>-> <#ffdd36>%receiver%<gray>: <white>%message%"  
+
+msg_receive:  
+  enabled: true  
+  message: "<#ffdd36>%sender% <gray>-> <#ffdd36>YOU<gray>: <white>%message%"  
+
+msg_reply_receive:  
+  enabled: true  
+  message: "<#ffdd36>%sender% <gray>-> <#ffdd36>%receiver%<gray>: <white>%message%"  
+
+msg_reply_send:  
+  enabled: true  
+  message: "<#ffdd36>YOU <gray>-> <#ffdd36>%receiver%<gray>: <white>%message%"
+
+# ------------------------------------------------------
+#                SHARD FEATURE
+# ------------------------------------------------------
+afkshard_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /afkshard <player>"  
+  sound: entity.villager.no  
+  
+shard_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /shard <player>"  
+  sound: entity.villager.no  
+
+killshard_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /killshard <player>"  
+  sound: entity.villager.no  
+  
+afkshard:   
+  enabled: true  
+  subtitle: "<#A303F9>+%amount% ꜱʜᴀʀᴅ"  
+
+killshard:   
+  enabled: true  
+  subtitle: "<#A303F9>+%amount% ꜱʜᴀʀᴅ"  
+
+shard_self:   
+  enabled: true  
+  message: "<gray>Bạn có <#A303F9>★%amount%"  
+  action_bar: "<gray>Bạn có <#A303F9>★$%amount%"  
+
+shard_other:  
+  enabled: true  
+  message: "<gray>%target% đang có <#A303F9>★%amount%"  
+  action_bar: "<gray>%target% đang có <#A303F9>★%amount%"
+
+# ------------------------------------------------------
+#                SPAWN FEATURE
+# ------------------------------------------------------
+spawn_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /spawn <name>"  
+  sound: entity.villager.no  
+
+setspawn_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /setspawn <name>"  
+  sound: entity.villager.no  
+
+delspawn_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /delspawn <name>"  
+  sound: entity.villager.no  
+  
+setspawn_success:  
+  enabled: true  
+  message: "<gray>Spawn %name% has been set."  
+  action_bar: "<gray>Spawn %name% has been set."  
+
+delspawn_success:  
+  enabled: true  
+  message: "<gray>Spawn %name% has been deleted."  
+  action_bar: "<gray>Spawn %name% has been deleted."
+  
+spawn_not_found:  
+  enabled: true  
+  message: "<#ff0000>Spawn %name% không tồn tại."  
+  action_bar: "<#ff0000>Spawn %name% không tồn tại."  
+  sound: entity.villager.no  
+  
+spawn_none_exist:  
+  enabled: true  
+  message: "<#ff0000>Không có spawn nào tồn tại để dịch chuyển!"  
+  action_bar: "<#ff0000>Không có spawn nào tồn tại để dịch chuyển!"  
+  sound: entity.villager.no
+  
+spawn_is_full:  
+  enabled: true  
+  message: "<#ff0000>Spawn đó đã đầy rồi, hãy thử lại sau!"  
+  action_bar: "<#ff0000>Spawn đó đã đầy rồi, hãy thử lại sau!"
+  sound: entity.villager.no
+  
+portal_disabled:
+  enabled: true  
+  message: "<#ff0000>Portal đã bị tắt ở Spawn!"  
+  action_bar: "<#ff0000>Portal đã bị tắt ở Spawn!"
+  sound: entity.villager.no
+  
+respawn_complete:
+  enabled: true  
+  sound: entity_enderman_teleport
+  
+# ------------------------------------------------------
+#                AFK FEATURE
+# ------------------------------------------------------
+afk_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /afk <name>"  
+  sound: entity.villager.no 
+
+setafk_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /setafk <name>"  
+  sound: entity.villager.no  
+
+delafk_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /delafk <name>"  
+  sound: entity.villager.no  
+  
+afk_not_found:  
+  enabled: true  
+  message: "<#ff0000>Afk %name% không tồn tại."  
+  action_bar: "<#ff0000>Afk %name% không tồn tại."  
+  sound: entity.villager.no  
+  
+afk_none_exist:  
+  enabled: true  
+  message: "<#ff0000>Không có afk nào tồn tại để dịch chuyển!"  
+  action_bar: "<#ff0000>Không có afk nào tồn tại để dịch chuyển!"  
+  sound: entity.villager.no
+  
+afk_is_full:  
+  enabled: true  
+  message: "<#ff0000>Afk đó đã đầy rồi, hãy thử lại sau!"  
+  action_bar: "<#ff0000>Afk đó đã đầy rồi, hãy thử lại sau!"
+  sound: entity.villager.no
+
+setafk_success:  
+  enabled: true  
+  message: "<gray>AFK %name% has been set."  
+  action_bar: "<gray>AFK %name% has been set."  
+
+delafk_success:  
+  enabled: true  
+  message: "<gray>AFK %name% has been deleted."  
+  action_bar: "<gray>AFK %name% has been deleted."
+
+# ------------------------------------------------------
+#                WARP FEATURE
+# ------------------------------------------------------
+setwarp_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /setwarp <name>"  
+  sound: entity.villager.no  
+
+delwarp_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /delwarp <name>"  
+  sound: entity.villager.no  
+
+warp_command:  
+  enabled: true  
+  message: "<#ff0000>Lệnh: /warp <name>"  
+  sound: entity.villager.no
+  
+warp_not_found:  
+  enabled: true  
+  message: "<#ff0000>Warp %name% không tồn tại."  
+  action_bar: "<#ff0000>Warp %name% không tồn tại."  
+  sound: entity.villager.no  
+  
+warp_none_exist:  
+  enabled: true  
+  message: "<#ff0000>Tất cả spawn không có cái nào khả dụng, vui lòng liên hệ quản trị viên."  
+  action_bar: "<#ff0000>Tất cả spawn không có cái nào khả dụng, vui lòng liên hệ quản trị viên."
+  sound: entity.villager.no
+  
+setwarp_success:  
+  enabled: true  
+  message: "<gray>Warp %name% has been set."  
+  action_bar: "<gray>Warp %name% has been set."  
+
+delwarp_success:  
+  enabled: true  
+  message: "<gray>Warp %name% has been deleted."  
+  action_bar: "<gray>Warp %name% has been deleted."
+
+# ------------------------------------------------------
+#                ANNOUNCEMENT FEATURE
+# ------------------------------------------------------
+restart_announcement:  
+  enabled: true  
+  message: "<#ff0000>Máy chủ đang khởi động lại..."  
+  action_bar: "<#ff0000>Máy chủ đang khởi động lại..."  
+  title: "<#ff0000>Máy chủ đang khởi động lại..."  
+  subtitle: "<gray>Please wait..."
+
+# ------------------------------------------------------
+#                DOUBLEJUMP FEATURE
+# ------------------------------------------------------
+doublejump_used:   
+  enabled: true  
+  sound: BLOCK_SLIME_BLOCK_FALL
+
+# ------------------------------------------------------
+#                LINK FEATURE
+# ------------------------------------------------------
+
+link_command:  
+  enabled: true  
+  message: "<gray>Hãy tham gia <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click> để link!"
+  action_bar: "<gray>Hãy tham gia <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click> để link!"
+  sound: entity.villager.no
+
+link_already_linked:
+  enabled: true  
+  message: "<#ff0000>Bạn đã liên kết tài khoản rồi!" 
+  action_bar: "<#ff0000>Bạn đã liên kết tài khoản rồi!" 
+  sound: entity.villager.no
+
+link_invalid_code:
+  enabled: true  
+  message: "<#ff0000>Code khòng hợp lệ!"
+  action_bar: "<#ff0000>Code khòng hợp lệ!"
+  sound: entity.villager.no
+
+link_discord_already_linked:
+  enabled: true  
+  message: "<#ff0000>Tài khoản discord đó đã liên kết với một tài khoản khác rồi!"
+  action_bar: "<#ff0000>Tài khoản discord đó đã liên kết với một tài khoản khác rồi!"
+  sound: entity.villager.no
+
+link_success:
+  enabled: true  
+  message: "<gray>Liên kết tài khoản thành công!"
+  action_bar: "<gray>Liên kết tài khoản thành công!"
+  sound: ENTITY_PLAYER_LEVELUP
+
+link_reminder:
+  enabled: true
+  message: "<gray>Bạn chưa liên kết tài khoản với Discord, hãy tham gia <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click> để liên kết!</gray>"
+  action_bar: "<gray>Bạn chưa liên kết tài khoản với Discord, hãy tham gia <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click> để liên kết!"
+  sound: ENTITY_PLAYER_LEVELUP
+
+# ------------------------------------------------------
+#                UNLINK FEATURE
+# ------------------------------------------------------
+
+unlink_command:  
+  enabled: true  
+  message: "<#ff0000>Bạn chỉ có thể unlink trong <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click>" 
+  action_bar: "<#ff0000>Bạn chỉ có thể unlink trong <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click>" 
+  sound: entity.villager.no
+
+# ------------------------------------------------------
+#                LOCK / UNLOCK FEATURE
+# ------------------------------------------------------
+
+lock_message: "<#ff0000>Tài khoản của bạn đã bị khóa!"

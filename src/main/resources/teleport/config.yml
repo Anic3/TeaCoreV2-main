@@ -1,0 +1,13 @@
+# Teleport delay in seconds
+teleport-delay: 5
+
+# Teleport movement cancel settings
+movement-cancel:
+  # Enable or disable teleport cancel on movement
+  enabled: true
+  # Maximum movement distance before cancel
+  max-distance: 0.5
+
+# If true: /spawn and /afk will automatically select the least populated area.
+# If false: players must manually choose an area (e.g. /spawn 3).
+auto-balance-enabled: false  

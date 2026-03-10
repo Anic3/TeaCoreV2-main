@@ -1,0 +1,14 @@
+# Teleport to spawn on first join
+on-first-join: true
+# Teleport to spawn on death
+on-death: true
+# If true: respawn at bed (fallback to spawn if no bed)
+# If false: always respawn at spawn
+bed-priority: true
+# Max players in each spawn area
+max-players: 50
+# Disable portal usage in spawn worlds
+disable-portal: true
+# When enabled, players who join the server while already being inside a spawn zone
+# will be teleported to an available spawn location/slot
+teleport-to-join: false
