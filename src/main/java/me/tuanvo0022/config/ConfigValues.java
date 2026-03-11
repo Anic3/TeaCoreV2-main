@@ -4,7 +4,6 @@ import me.tuanvo0022.Main;
 import me.tuanvo0022.managers.ConfigManager;
 
 import java.util.List;
-import java.util.Map;
 
 public final class ConfigValues {
     private final Main plugin;
@@ -60,43 +59,6 @@ public final class ConfigValues {
     public String JOIN_MESSAGE;
     public String QUIT_MESSAGE;
 
-    // ===== DISCORD =====
-    public boolean DISCORD_ENABLED;
-
-    public String DISCORD_TOKEN;
-    public String DISCORD_GUILD_ID;
-
-    public String DISCORD_STATUS;
-
-    public String DISCORD_ACTIVITY_TEXT;
-    public String DISCORD_ACTIVITY_TYPE;
-    public long DISCORD_ACTIVITY_UPDATE_INTERVAL;
-
-    public boolean LINK_ENABLED;
-    public int LINK_CODE_LENGTH;
-    public long LINK_CODE_EXPIRE_SECONDS;
-    public String LINK_CODE_CHARSET;
-
-    public String LINK_REWARD_DISCORD_ROLE;
-
-    public boolean LINK_COMMANDS_ENABLED;
-    public boolean LINK_COMMANDS_ONLY_IF_PLAYER_ONLINE;
-    public List<String> LINK_COMMANDS;
-
-    // MC -> Discord
-    public boolean ROLE_SYNC_MC_TO_DISCORD_ENABLED;
-    public Map<String, String> ROLE_SYNC_MC_TO_DISCORD_GROUPS;
-
-    // Discord -> MC
-    public boolean ROLE_SYNC_DISCORD_TO_MC_ENABLED;
-    public boolean ROLE_SYNC_DISCORD_TO_MC_ENFORCE_UNLINKED_CLEANUP;
-    public Map<String, String> ROLE_SYNC_DISCORD_TO_MC_ROLES;
-
-    public long UNLINK_COOLDOWN;
-    public boolean UNLINK_NICKNAME_RESET;
-    public boolean UNLINK_EXECUTE_COMMANDS;
-    public List<String> UNLINK_SERVER_COMMANDS;
-
     // ===== HOOKS =====
     public String HOOKS_CURRENCYNAME;
 
@@ -110,7 +72,6 @@ public final class ConfigValues {
     private final String teleportKey = "teleport/config";
     private final String combatKey = "combat/config";
     private final String joinQuitKey = "joinquit/config";
-    private final String discordKey = "discord/config";
     private final String hooksKey = "hooks";
 
     public void reload() {
@@ -124,7 +85,7 @@ public final class ConfigValues {
         // SPAWN
         SPAWN_ON_FIRST_JOIN =
             config.getBoolean(spawnKey, "on-first-join");
-        
+
         SPAWN_ON_DEATH =
             config.getBoolean(spawnKey, "on-death");
 
@@ -214,76 +175,5 @@ public final class ConfigValues {
         // HOOKS
         HOOKS_CURRENCYNAME =
             config.getString(hooksKey, "coinsengine");
-
-        // ===== DISCORD =====
-        DISCORD_ENABLED = config.getBoolean(discordKey, "bot-settings.enabled", true);
-
-        DISCORD_TOKEN =
-                config.getString(discordKey, "token");
-
-        DISCORD_GUILD_ID =
-                config.getString(discordKey, "guild-id");
-
-        DISCORD_STATUS =
-                config.getString(discordKey, "bot-settings.status");
-
-        DISCORD_ACTIVITY_TEXT =
-                config.getString(discordKey, "bot-settings.activity.text");
-
-        DISCORD_ACTIVITY_TYPE =
-                config.getString(discordKey, "bot-settings.activity.type");
-
-        DISCORD_ACTIVITY_UPDATE_INTERVAL =
-                config.getLong(discordKey, "bot-settings.update-interval");
-
-        LINK_ENABLED =
-                config.getBoolean(discordKey, "link.enabled");
-
-        LINK_CODE_LENGTH =
-                config.getInt(discordKey, "link.code.length");
-
-        LINK_CODE_EXPIRE_SECONDS =
-                config.getLong(discordKey, "link.code.expire-seconds");
-
-        LINK_CODE_CHARSET =
-                config.getString(discordKey, "link.code.charset");
-
-        LINK_REWARD_DISCORD_ROLE =
-                config.getString(discordKey, "link.rewards.give-discord-role");
-
-        LINK_COMMANDS_ENABLED =
-                config.getBoolean(discordKey, "link.rewards.execute-commands.enabled");
-
-        LINK_COMMANDS =
-                config.getStringList(discordKey, "link.rewards.execute-commands.commands");
-
-        // MC -> Discord
-        ROLE_SYNC_MC_TO_DISCORD_ENABLED =
-                config.getBoolean(discordKey, "role-sync.mc-to-discord.enabled");
-
-        ROLE_SYNC_MC_TO_DISCORD_GROUPS =
-                config.getStringMap(discordKey, "role-sync.mc-to-discord.groups");
-
-        // Discord -> MC
-        ROLE_SYNC_DISCORD_TO_MC_ENABLED =
-                config.getBoolean(discordKey, "role-sync.discord-to-mc.enabled");
-
-        ROLE_SYNC_DISCORD_TO_MC_ENFORCE_UNLINKED_CLEANUP =
-                config.getBoolean(discordKey, "role-sync.discord-to-mc.enforce-unlinked-cleanup");
-
-        ROLE_SYNC_DISCORD_TO_MC_ROLES =
-                config.getStringMap(discordKey, "role-sync.discord-to-mc.roles");
-
-        UNLINK_COOLDOWN =
-                config.getLong(discordKey, "unlink.cooldown");
-
-        UNLINK_NICKNAME_RESET =
-                config.getBoolean(discordKey, "unlink.nickname-reset");
-
-        UNLINK_EXECUTE_COMMANDS =
-                config.getBoolean(discordKey, "unlink.execute-commands");
-
-        UNLINK_SERVER_COMMANDS =
-                config.getStringList(discordKey, "unlink.server-commands");
     }
 }

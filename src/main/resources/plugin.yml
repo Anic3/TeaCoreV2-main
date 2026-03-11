@@ -20,7 +20,6 @@ softdepend:
 
 libraries:
   - com.zaxxer:HikariCP:7.0.2
-  - net.dv8tion:JDA:6.2.0
 
 commands:
   teacore:
@@ -51,6 +50,7 @@ commands:
     usage: /<command>
     permission: teacore.enderchest
     aliases: [ec]
+
 permissions:
   # -----------------------------
   # PERMISSIONS DEFAULT TRUE
@@ -72,9 +72,6 @@ permissions:
     default: true
   teacore.delwarp:
     description: "Allows deleting a warp point"
-    default: true
-  teacore.discord:
-    description: "Allows sending or accessing the Discord link"
     default: true
   teacore.killshard:
     description: "Allows claiming kill shards"
@@ -118,9 +115,6 @@ permissions:
   teadoublejump.use:
     description: "Allows use double jump"
     default: true
-  teacore.link:
-    description: "Allows using the link command"
-    default: true
 
   # -----------------------------
   # PERMISSIONS DEFAULT OP
@@ -148,4 +142,38 @@ permissions:
     default: op
   teafly.use:
     description: "Allows use fly in region"
+    default: op
+
+  # -----------------------------
+  # STAFF PERMISSIONS DEFAULT OP
+  # -----------------------------
+  teacore.invsee:
+    description: "Allows viewing another player's inventory"
+    default: op
+  teacore.invsee.edit:
+    description: "Allows editing inventory while using invsee"
+    default: op
+  teacore.endersee:
+    description: "Allows viewing another player's ender chest"
+    default: op
+  teacore.endersee.edit:
+    description: "Allows editing ender chest while using endersee"
+    default: op
+  teacore.gamemode:
+    description: "Allows changing own gamemode"
+    default: op
+  teacore.gamemode.other:
+    description: "Allows changing another player's gamemode"
+    default: op
+  teacore.tphere:
+    description: "Allows teleporting a player to yourself"
+    default: op
+  teacore.tpto:
+    description: "Allows teleporting to a player without request"
+    default: op
+  teacore.vanish:
+    description: "Allows toggling staff vanish"
+    default: op
+  teacore.vanish.see:
+    description: "Allows seeing vanished players"
     default: op
