@@ -89,16 +89,120 @@ store:
   action_bar: '<gray>Link has been sent to chat!'  
 
 # ------------------------------------------------------
-#                DISCORD FEATURE
+#                STAFF FEATURE
 # ------------------------------------------------------
-discord:
+
+# InvSee
+invsee_command:
   enabled: true
-  message: |-
-    <white>
-    <#2f9bde>➤ ᴊᴏɪɴ ᴛʜᴇ ᴠɪᴇꜱᴛᴇᴀʟ ᴅɪꜱᴄᴏʀᴅ ᴄᴏᴍᴍᴜɴɪᴛʏ!
-    <#2f9bde>● <click:open_url:https://discord.gg/viesteal><color:#2f9bde>● <white>discord.gg/viesteal</click>
-    <white>
-  action_bar: '<gray>Link has been sent to chat!' 
+  message: "<#ff0000>Lệnh: /invsee <player>"
+  sound: entity.villager.no
+
+invsee_self:
+  enabled: true
+  message: "<#ff0000>Bạn không thể xem túi đồ của chính mình."
+  sound: entity.villager.no
+
+invsee_open:
+  enabled: true
+  message: "<gray>Đang xem túi đồ của <#ffdd36>%target%<gray>."
+  action_bar: "<gray>Đang xem túi đồ của <#ffdd36>%target%<gray>."
+
+# EnderSee
+endersee_command:
+  enabled: true
+  message: "<#ff0000>Lệnh: /endersee <player>"
+  sound: entity.villager.no
+
+endersee_self:
+  enabled: true
+  message: "<#ff0000>Bạn không thể xem Ender Chest của chính mình."
+  sound: entity.villager.no
+
+endersee_open:
+  enabled: true
+  message: "<gray>Đang xem Ender Chest của <#ffdd36>%target%<gray>."
+  action_bar: "<gray>Đang xem Ender Chest của <#ffdd36>%target%<gray>."
+
+# Gamemode
+gamemode_command:
+  enabled: true
+  message: "<#ff0000>Lệnh: /gm <survival|creative|spectator|adventure> [player]"
+  sound: entity.villager.no
+
+gamemode_invalid:
+  enabled: true
+  message: "<#ff0000>Gamemode không hợp lệ. Dùng: survival, creative, spectator, adventure (hoặc 0-3)."
+  sound: entity.villager.no
+
+gamemode_set_self:
+  enabled: true
+  message: "<gray>Gamemode của bạn đã được đổi sang <#ffdd36>%mode%<gray>."
+  action_bar: "<gray>Gamemode: <#ffdd36>%mode%"
+  sound: BLOCK_NOTE_BLOCK_PLING
+
+gamemode_set_other:
+  enabled: true
+  message: "<gray>Đã đổi gamemode của <#ffdd36>%target% <gray>sang <#ffdd36>%mode%<gray>."
+  action_bar: "<gray>Đã đổi gamemode của <#ffdd36>%target% <gray>sang <#ffdd36>%mode%<gray>."
+
+gamemode_received:
+  enabled: true
+  message: "<gray>Gamemode của bạn đã được đổi sang <#ffdd36>%mode% <gray>bởi <#ffdd36>%staff%<gray>."
+  action_bar: "<gray>Gamemode: <#ffdd36>%mode%"
+
+# TpHere
+tphere_command:
+  enabled: true
+  message: "<#ff0000>Lệnh: /tphere <player>"
+  sound: entity.villager.no
+
+tphere_self:
+  enabled: true
+  message: "<#ff0000>Bạn không thể teleport chính mình đến bạn."
+  sound: entity.villager.no
+
+tphere_success:
+  enabled: true
+  message: "<gray>Đã teleport <#ffdd36>%target% <gray>đến bạn."
+  action_bar: "<gray>Đã teleport <#ffdd36>%target% <gray>đến bạn."
+  sound: entity_enderman_teleport
+
+tphere_teleported:
+  enabled: true
+  message: "<gray>Bạn đã bị teleport đến <#ffdd36>%staff%<gray>."
+  action_bar: "<gray>Bạn đã bị teleport đến <#ffdd36>%staff%<gray>."
+  sound: entity_enderman_teleport
+
+# TpTo
+tpto_command:
+  enabled: true
+  message: "<#ff0000>Lệnh: /tpto <player>"
+  sound: entity.villager.no
+
+tpto_self:
+  enabled: true
+  message: "<#ff0000>Bạn không thể teleport đến chính mình."
+  sound: entity.villager.no
+
+tpto_success:
+  enabled: true
+  message: "<gray>Đã teleport đến <#ffdd36>%target%<gray>."
+  action_bar: "<gray>Đã teleport đến <#ffdd36>%target%<gray>."
+  sound: entity_enderman_teleport
+
+# Vanish
+vanish_enabled:
+  enabled: true
+  message: "<gray>Bạn đã ẩn mình."
+  action_bar: "<gray>Bạn đã ẩn mình."
+  sound: BLOCK_NOTE_BLOCK_BASS
+
+vanish_disabled:
+  enabled: true
+  message: "<gray>Bạn đã hiện lại."
+  action_bar: "<gray>Bạn đã hiện lại."
+  sound: BLOCK_NOTE_BLOCK_BASS
  
 
 # ------------------------------------------------------
@@ -503,59 +607,3 @@ restart_announcement:
 doublejump_used:   
   enabled: true  
   sound: BLOCK_SLIME_BLOCK_FALL
-
-# ------------------------------------------------------
-#                LINK FEATURE
-# ------------------------------------------------------
-
-link_command:  
-  enabled: true  
-  message: "<gray>Hãy tham gia <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click> để link!"
-  action_bar: "<gray>Hãy tham gia <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click> để link!"
-  sound: entity.villager.no
-
-link_already_linked:
-  enabled: true  
-  message: "<#ff0000>Bạn đã liên kết tài khoản rồi!" 
-  action_bar: "<#ff0000>Bạn đã liên kết tài khoản rồi!" 
-  sound: entity.villager.no
-
-link_invalid_code:
-  enabled: true  
-  message: "<#ff0000>Code khòng hợp lệ!"
-  action_bar: "<#ff0000>Code khòng hợp lệ!"
-  sound: entity.villager.no
-
-link_discord_already_linked:
-  enabled: true  
-  message: "<#ff0000>Tài khoản discord đó đã liên kết với một tài khoản khác rồi!"
-  action_bar: "<#ff0000>Tài khoản discord đó đã liên kết với một tài khoản khác rồi!"
-  sound: entity.villager.no
-
-link_success:
-  enabled: true  
-  message: "<gray>Liên kết tài khoản thành công!"
-  action_bar: "<gray>Liên kết tài khoản thành công!"
-  sound: ENTITY_PLAYER_LEVELUP
-
-link_reminder:
-  enabled: true
-  message: "<gray>Bạn chưa liên kết tài khoản với Discord, hãy tham gia <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click> để liên kết!</gray>"
-  action_bar: "<gray>Bạn chưa liên kết tài khoản với Discord, hãy tham gia <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click> để liên kết!"
-  sound: ENTITY_PLAYER_LEVELUP
-
-# ------------------------------------------------------
-#                UNLINK FEATURE
-# ------------------------------------------------------
-
-unlink_command:  
-  enabled: true  
-  message: "<#ff0000>Bạn chỉ có thể unlink trong <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click>" 
-  action_bar: "<#ff0000>Bạn chỉ có thể unlink trong <click:open_url:https://discord.gg/viesteal><#7289da>[DISCORD]</#7289da></click>" 
-  sound: entity.villager.no
-
-# ------------------------------------------------------
-#                LOCK / UNLOCK FEATURE
-# ------------------------------------------------------
-
-lock_message: "<#ff0000>Tài khoản của bạn đã bị khóa!"

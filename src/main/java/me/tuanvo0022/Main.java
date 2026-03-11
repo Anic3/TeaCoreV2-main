@@ -1,7 +1,6 @@
 package me.tuanvo0022;
 
 import me.tuanvo0022.commands.BalanceCommand;
-import me.tuanvo0022.commands.DiscordCommand;
 import me.tuanvo0022.commands.HideCommand;
 import me.tuanvo0022.commands.MessageCommand;
 import me.tuanvo0022.commands.MessageToggleCommand;
@@ -28,9 +27,13 @@ import me.tuanvo0022.commands.SetWarpCommand;
 import me.tuanvo0022.commands.DelWarpCommand;
 import me.tuanvo0022.commands.WarpCommand;
 import me.tuanvo0022.commands.RestartCommand;
-import me.tuanvo0022.commands.LinkCommand;
-import me.tuanvo0022.commands.UnlinkCommand;
 import me.tuanvo0022.commands.EnderchestCommand;
+import me.tuanvo0022.commands.InvSeeCommand;
+import me.tuanvo0022.commands.EnderSeeCommand;
+import me.tuanvo0022.commands.GamemodeCommand;
+import me.tuanvo0022.commands.TpHereCommand;
+import me.tuanvo0022.commands.TpToCommand;
+import me.tuanvo0022.commands.VanishCommand;
 
 import me.tuanvo0022.database.DatabaseManager;
 
@@ -49,19 +52,15 @@ import me.tuanvo0022.listeners.JoinQuitListener;
 import me.tuanvo0022.listeners.SpawnListener;
 import me.tuanvo0022.listeners.AfkListener;
 import me.tuanvo0022.listeners.DeathLightningListener;
-import me.tuanvo0022.listeners.DiscordListener;
+import me.tuanvo0022.listeners.VanishListener;
 
 import me.tuanvo0022.menus.ListSpawnView;
 import me.tuanvo0022.menus.ListAfkView;
-
-import me.tuanvo0022.discord.DiscordBotManager;
-import me.tuanvo0022.discord.link.LinkCodeManager;
 
 import me.tuanvo0022.managers.ConfigManager;
 import me.tuanvo0022.managers.FileManager;
 
 import me.tuanvo0022.service.EconomyService;
-import me.tuanvo0022.service.DiscordService;
 
 import me.tuanvo0022.papi.TeaCoreExpansion;
 
@@ -69,7 +68,6 @@ import me.tuanvo0022.utils.ColorUtil;
 import me.tuanvo0022.utils.MessageUtil;
 import me.tuanvo0022.utils.TeleportUtil;
 import me.tuanvo0022.utils.WorldUtil;
-import me.tuanvo0022.utils.EmbedUtil;
 
 import me.tuanvo0022.config.ConfigValues;
 
@@ -91,28 +89,27 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.reflect.Field;
 import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Main extends JavaPlugin {
     private static FoliaLib foliaLib;
-    
+
     private FileManager fileManager;
     private ConfigManager configManager;
     private DatabaseManager databaseManager;
     private ViewFrame viewFrame;
     private ConfigValues configValues;
 
-    private DiscordBotManager discordBotManager;
-    private LinkCodeManager linkCodeManager;
-    
     private EconomyService economyService;
-    private DiscordService discordService;
 
     private LuckPerms luckPerms;
 
     private final ConcurrentHashMap<ShopEconomy.Type, ShopEconomy> economies = new ConcurrentHashMap<>();
     private final Map<Player, Player> lastMessaged = new ConcurrentHashMap<>();
-    
+    private final Set<UUID> vanishedPlayers = ConcurrentHashMap.newKeySet();
+
     @Override
     public void onEnable() {
         saveDefaultConfig();
@@ -125,7 +122,7 @@ public class Main extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        
+
         if (getServer().getPluginManager().getPlugin("Vault") != null) {
             economies.put(ShopEconomy.Type.VAULT, new VaultEconomy());
             getLogger().info("Vault detected.");
@@ -134,7 +131,7 @@ public class Main extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        
+
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
             getLogger().info("PlaceholderAPI detected.");
         } else {
@@ -142,7 +139,7 @@ public class Main extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        
+
         if (getServer().getPluginManager().getPlugin("TAB") != null) {
             getLogger().info("TAB detected.");
         } else {
@@ -150,7 +147,7 @@ public class Main extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        
+
         if (getServer().getPluginManager().getPlugin("packetevents") != null) {
             PacketEvents.getAPI().load();
             getLogger().info("packetevents detected.");
@@ -169,39 +166,39 @@ public class Main extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        
+
         foliaLib = new FoliaLib(this);
-        
+
         databaseManager = new DatabaseManager(this);
         fileManager = new FileManager(this);
         configManager = new ConfigManager(this);
         configValues = new ConfigValues(this);
         economyService = new EconomyService(this);
-        
+
         databaseManager.loadAllSpawnLocations().thenRun(() -> {
             for (String name : databaseManager.getAllSpawnNames()) {
                 if (name == null) continue;
-                
+
                 getLogger().info("[Spawn] Loaded " + name);
             }
         });
-        
+
         databaseManager.loadAllAfkLocations().thenRun(() -> {
             for (String name : databaseManager.getAllAfkNames()) {
                 if (name == null) continue;
-                
+
                 getLogger().info("[AFK] Loaded " + name);
             }
         });
-        
+
         databaseManager.loadAllWarpLocations().thenRun(() -> {
             for (String name : databaseManager.getAllWarpNames()) {
                 if (name == null) continue;
-                
+
                 getLogger().info("[Warp] Loaded " + name);
             }
         });
-        
+
         fileManager.loadFile("messages.yml");
         fileManager.loadFile("hooks.yml");
         fileManager.loadFile("menus/list-spawn-menu.yml");
@@ -216,13 +213,6 @@ public class Main extends JavaPlugin {
         fileManager.loadFile("teleport/config.yml");
         fileManager.loadFile("combat/config.yml");
         fileManager.loadFile("joinquit/config.yml");
-        fileManager.loadFile("discord/config.yml");
-        fileManager.loadFile("discord/panel/panel-embed.yml");
-        fileManager.loadFile("discord/panel/panel-status-embed.yml");
-        fileManager.loadFile("discord/panel/panel-messages.yml");
-        fileManager.loadFile("discord/panel/profile-embed.yml");
-        fileManager.loadFile("discord/modal/chat-modal.yml");
-        fileManager.loadFile("discord/modal/pay-modal.yml");
 
         configValues.load(configManager);
 
@@ -230,67 +220,52 @@ public class Main extends JavaPlugin {
             economies.put(ShopEconomy.Type.PLAYER_POINTS, new PlayerPointsEconomy());
             getLogger().info("PlayerPoints detected.");
         }
-        
+
         if (getServer().getPluginManager().getPlugin("CoinsEngine") != null) {
             economies.put(ShopEconomy.Type.COINSENGINE, new CoinsEngineEconomy(this));
             getLogger().info("CoinsEngine detected.");
         }
 
-        discordBotManager = new DiscordBotManager(this);
-        linkCodeManager = new LinkCodeManager(this);
-
-        discordService = new DiscordService(this);
-        
         new ColorUtil(this);
         new MessageUtil(this);
         new TeleportUtil(this);
         new WorldUtil(this);
-        new EmbedUtil(this);
-            
+
         new TeaCoreExpansion(this).register();
-        
+
         getServer().getPluginManager().registerEvents(new PlayerDataLoader(this), this);
         getServer().getPluginManager().registerEvents(new JoinQuitListener(this), this);
         getServer().getPluginManager().registerEvents(new DeathLightningListener(this), this);
-        
+
         registerFeatures();
-        
+
         registerInventoryFramework();
-        
+
         getCommand("ping").setExecutor(new PingCommand(this));
         getCommand("restart").setExecutor(new RestartCommand(this));
         getCommand("teacore").setExecutor(new ReloadCommand(this));
     }
-    
+
     @Override
     public void onDisable() {
         PacketEvents.getAPI().terminate();
 
-        if (linkCodeManager != null) {
-            linkCodeManager.close();
-        }
-
-        if (discordBotManager != null) {
-            discordBotManager.close();
-        }
-        
         if (databaseManager != null) {
             databaseManager.close();
         }
-        
+
         if (foliaLib != null) {
             getScheduler().cancelAllTasks();
         }
     }
-    
+
     private void registerFeatures() {
         String pluginName = getName().toLowerCase();
-        
+
         String[] features = {
             "nightvision",
             "spawn",
             "afk",
-            "discord",
             "store",
             "chat",
             "economy",
@@ -301,22 +276,14 @@ public class Main extends JavaPlugin {
             "stats",
             "jumpandfly",
             "shard",
-            "enderchest"
-
+            "enderchest",
+            "staff"
         };
-        
+
         for (String feature : features) {
             if (!getConfig().getBoolean("features." + feature, true)) continue;
-            
-            switch (feature) {
-                case "discord":
-                    getCommandMap().register(pluginName, new DiscordCommand());
-                    getCommandMap().register(pluginName, new LinkCommand(this));
-                    getCommandMap().register(pluginName, new UnlinkCommand(this));
-                    getServer().getPluginManager().registerEvents(new DiscordListener(this), this);
 
-                    discordBotManager.init();
-                    break;
+            switch (feature) {
                 case "store":
                     getCommandMap().register(pluginName, new StoreCommand());
                     break;
@@ -357,10 +324,10 @@ public class Main extends JavaPlugin {
                     getCommandMap().register(pluginName, new AfkCommand(this));
                     getCommandMap().register(pluginName, new AfkshardCommand(this));
                     getCommandMap().register(pluginName, new KillshardCommand(this));
-                    break;    
+                    break;
                 case "shard":
                     getCommandMap().register(pluginName, new ShardCommand(this));
-                    break;    
+                    break;
                 case "spawn":
                     getServer().getPluginManager().registerEvents(new SpawnListener(this), this);
                     getCommandMap().register(pluginName, new SetSpawnCommand(this));
@@ -375,11 +342,24 @@ public class Main extends JavaPlugin {
                 case "enderchest":
                     getCommand("enderchest").setExecutor(new EnderchestCommand(this));
                     break;
+                case "staff":
+                    getServer().getPluginManager().registerEvents(new VanishListener(this), this);
+                    getCommandMap().register(pluginName, new InvSeeCommand(this));
+                    getCommandMap().register(pluginName, new EnderSeeCommand(this));
+                    getCommandMap().register(pluginName, new GamemodeCommand(this, "gm", null));
+                    getCommandMap().register(pluginName, new GamemodeCommand(this, "gms", "survival"));
+                    getCommandMap().register(pluginName, new GamemodeCommand(this, "gmc", "creative"));
+                    getCommandMap().register(pluginName, new GamemodeCommand(this, "gmsp", "spectator"));
+                    getCommandMap().register(pluginName, new GamemodeCommand(this, "gma", "adventure"));
+                    getCommandMap().register(pluginName, new TpHereCommand(this));
+                    getCommandMap().register(pluginName, new TpToCommand(this));
+                    getCommandMap().register(pluginName, new VanishCommand(this));
+                    break;
             }
             getLogger().info(capitalize(feature) + " feature is enabled!");
         }
     }
-    
+
     private void registerInventoryFramework() {
         viewFrame = ViewFrame.create(this)
             .with(
@@ -389,18 +369,18 @@ public class Main extends JavaPlugin {
             .disableMetrics()
             .register();
     }
-    
+
     private String capitalize(String str) {
         if (str == null || str.isEmpty()) {
             return str;
         }
-        
+
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
-    
+
     private CommandMap getCommandMap() {
         CommandMap commandMap = null;
-        
+
         try {
             if (getServer() != null) {
                 Field bukkitCommandMap = getServer().getClass().getDeclaredField("commandMap");
@@ -410,14 +390,14 @@ public class Main extends JavaPlugin {
         } catch (IllegalAccessException | NoSuchFieldException e) {
             e.printStackTrace();
         }
-        
+
         return commandMap;
     }
-    
+
     public static PlatformScheduler getScheduler() {
         return foliaLib.getScheduler();
     }
-    
+
     public FileManager getFileManager() {
         return fileManager;
     }
@@ -425,19 +405,11 @@ public class Main extends JavaPlugin {
     public ConfigManager getConfigManager() {
         return configManager;
     }
-    
+
     public DatabaseManager getDatabaseManager() {
         return databaseManager;
     }
 
-    public DiscordBotManager getDiscordBotManager() {
-        return discordBotManager;
-    }
-
-    public LinkCodeManager getLinkCodeManager() {
-        return linkCodeManager;
-    }
-    
     public ViewFrame getViewFrame() {
         return viewFrame;
     }
@@ -445,7 +417,7 @@ public class Main extends JavaPlugin {
     public ConfigValues config() {
         return configValues;
     }
-    
+
     public ConcurrentHashMap<ShopEconomy.Type, ShopEconomy> getEconomies() {
         return economies;
     }
@@ -458,11 +430,11 @@ public class Main extends JavaPlugin {
         return economyService;
     }
 
-    public DiscordService getDiscordService() {
-        return discordService;
-    }
-
     public LuckPerms getLuckPerms() {
         return luckPerms;
+    }
+
+    public Set<UUID> getVanishedPlayers() {
+        return vanishedPlayers;
     }
 }
